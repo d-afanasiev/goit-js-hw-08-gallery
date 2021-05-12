@@ -39,18 +39,10 @@ const refs = {
       refs.lightboxImage.setAttribute("src", "");
       window.removeEventListener("keydown", refs.onRemoveLightbox);
     } else if (event.code === "ArrowLeft") {
-      if (indexEl === 0) {
-        indexEl = gallery.length - 1;
-      } else {
-        indexEl -= 1;
-      }
+      indexEl === 0 ? (indexEl = gallery.length - 1) : (indexEl -= 1);
       refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
     } else if (event.code === "ArrowRight") {
-      if (indexEl === gallery.length - 1) {
-        indexEl = 0;
-      } else {
-        indexEl += 1;
-      }
+      indexEl === gallery.length - 1 ? (indexEl = 0) : (indexEl += 1);
       refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
     }
   },
