@@ -5,7 +5,6 @@ const refs = {
   galleryLink: document.querySelector(".gallery__link"),
   lightbox: document.querySelector(".js-lightbox"),
   lightboxImage: document.querySelector(".lightbox__image"),
-  lightboxOverlay: document.querySelector(".lightbox__overlay"),
   arrList: [],
 
   insertList() {
