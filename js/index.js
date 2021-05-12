@@ -31,12 +31,29 @@ const refs = {
   },
 
   onRemoveLightbox(event) {
-    console.dir(event);
-    console.log(event.code);
+    let indexEl = gallery
+      .map((gallery) => gallery.original)
+      .indexOf(refs.lightboxImage.src);
     if (event.code === "Escape") {
       refs.lightbox.classList.remove("is-open");
       refs.lightboxImage.setAttribute("src", "");
       window.removeEventListener("keydown", refs.onRemoveLightbox);
+    } else if (event.code === "ArrowLeft") {
+      if (indexEl === 0) {
+        indexEl = gallery.length - 1;
+        refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
+      } else {
+        indexEl -= 1;
+        refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
+      }
+    } else if (event.code === "ArrowRight") {
+      if (indexEl === gallery.length - 1) {
+        indexEl = 0;
+        refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
+      } else {
+        indexEl += 1;
+        refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
+      }
     }
   },
 };
