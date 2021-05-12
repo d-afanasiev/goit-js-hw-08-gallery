@@ -41,19 +41,17 @@ const refs = {
     } else if (event.code === "ArrowLeft") {
       if (indexEl === 0) {
         indexEl = gallery.length - 1;
-        refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
       } else {
         indexEl -= 1;
-        refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
       }
+      refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
     } else if (event.code === "ArrowRight") {
       if (indexEl === gallery.length - 1) {
         indexEl = 0;
-        refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
       } else {
         indexEl += 1;
-        refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
       }
+      refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
     }
   },
 };
