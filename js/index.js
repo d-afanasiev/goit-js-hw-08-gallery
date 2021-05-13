@@ -30,10 +30,11 @@ const refs = {
     );
   },
 
-  onPressKey(event) {
-    let indexEl = gallery
-      .map((gallery) => gallery.original)
-      .indexOf(refs.lightboxImage.src);
+  onPressKey(event, dataSourse) {
+    console.log(dataSourse);
+    let indexEl = gallery.findIndex(
+      (gallery) => gallery.original === refs.lightboxImage.src
+    );
     switch (event.code) {
       case "Escape":
         refs.lightbox.classList.remove("is-open");
