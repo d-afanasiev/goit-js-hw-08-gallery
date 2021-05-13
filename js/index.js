@@ -30,20 +30,26 @@ const refs = {
     );
   },
 
-  onRemoveLightbox(event) {
+  onPressKey(event) {
     let indexEl = gallery
       .map((gallery) => gallery.original)
       .indexOf(refs.lightboxImage.src);
-    if (event.code === "Escape") {
-      refs.lightbox.classList.remove("is-open");
-      refs.lightboxImage.setAttribute("src", "");
-      window.removeEventListener("keydown", refs.onRemoveLightbox);
-    } else if (event.code === "ArrowLeft") {
-      indexEl === 0 ? (indexEl = gallery.length - 1) : (indexEl -= 1);
-      refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
-    } else if (event.code === "ArrowRight") {
-      indexEl === gallery.length - 1 ? (indexEl = 0) : (indexEl += 1);
-      refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
+    switch (event.code) {
+      case "Escape":
+        refs.lightbox.classList.remove("is-open");
+        refs.lightboxImage.setAttribute("src", "");
+        window.removeEventListener("keydown", refs.onPressKey);
+        break;
+
+      case "ArrowLeft":
+        indexEl === 0 ? (indexEl = gallery.length - 1) : (indexEl -= 1);
+        refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
+        break;
+
+      case "ArrowRight":
+        indexEl === gallery.length - 1 ? (indexEl = 0) : (indexEl += 1);
+        refs.lightboxImage.setAttribute("src", gallery[indexEl].original);
+        break;
     }
   },
 };
@@ -59,7 +65,7 @@ refs.galleryList.addEventListener("click", (event) => {
     refs.lightboxImage.setAttribute("src", dataSourse);
   }
 
-  window.addEventListener("keydown", refs.onRemoveLightbox);
+  window.addEventListener("keydown", refs.onPressKey);
 });
 
 refs.lightbox.addEventListener("click", (event) => {
@@ -71,5 +77,5 @@ refs.lightbox.addEventListener("click", (event) => {
     refs.lightboxImage.setAttribute("src", "");
   }
 
-  window.removeEventListener("keydown", refs.onRemoveLightbox);
+  window.removeEventListener("keydown", refs.onPressKey);
 });
