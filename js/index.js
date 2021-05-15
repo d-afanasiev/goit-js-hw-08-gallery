@@ -30,8 +30,7 @@ const refs = {
     );
   },
 
-  onPressKey(event, dataSourse) {
-    console.log(dataSourse);
+  onPressKey(event) {
     let indexEl = gallery.findIndex(
       (gallery) => gallery.original === refs.lightboxImage.src
     );
