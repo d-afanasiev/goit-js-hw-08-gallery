@@ -5,11 +5,11 @@ const refs = {
   galleryLink: document.querySelector(".gallery__link"),
   lightbox: document.querySelector(".js-lightbox"),
   lightboxImage: document.querySelector(".lightbox__image"),
-  arrList: [],
 
   insertList() {
-    gallery.map(({ preview, original, description }) => {
-      this.arrList.push(`<li class="gallery__item">
+    const arrList = gallery
+      .map(({ preview, original, description }) => {
+        return `<li class="gallery__item">
         <a
             class="gallery__link"
             href=""
@@ -21,13 +21,10 @@ const refs = {
             alt="${description}"
             />
         </a>
-        </li>`);
-    });
-
-    this.galleryList.insertAdjacentHTML(
-      "afterbegin",
-      [...this.arrList].join("")
-    );
+        </li>`;
+      })
+      .join("");
+    this.galleryList.innerHTML = arrList;
   },
 
   onPressKey(event) {
