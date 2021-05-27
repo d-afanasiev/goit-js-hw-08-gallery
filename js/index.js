@@ -7,7 +7,7 @@ const refs = {
   lightboxImage: document.querySelector(".lightbox__image"),
 
   insertList() {
-    const arrList = gallery
+    const arrayList = gallery
       .map(({ preview, original, description }) => {
         return `<li class="gallery__item">
         <a
@@ -24,7 +24,7 @@ const refs = {
         </li>`;
       })
       .join("");
-    this.galleryList.innerHTML = arrList;
+    this.galleryList.innerHTML = arrayList;
   },
 
   onPressKey(event) {
@@ -55,11 +55,11 @@ refs.insertList();
 refs.galleryList.addEventListener("click", (event) => {
   event.preventDefault();
 
-  const dataSourse = event.target.dataset.source;
+  const dataSource = event.target.dataset.source;
 
   if (event.target.classList.value === "gallery__image") {
     refs.lightbox.classList.add("is-open");
-    refs.lightboxImage.setAttribute("src", dataSourse);
+    refs.lightboxImage.setAttribute("src", dataSource);
   }
 
   window.addEventListener("keydown", refs.onPressKey);
